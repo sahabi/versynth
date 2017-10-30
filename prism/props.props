@@ -1,0 +1,6 @@
+P=? [(F ("goal")) & (G (! ("crash")))]
+
+P=? [F "goal"]
+
+P=? [!(F ("crash"))]
+

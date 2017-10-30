@@ -1,0 +1,41 @@
+dtmc
+module obstacle
+    o_state : [0..15] init 14;
+
+    [] o_state = 9 ->  1/2 : (o_state' = 9) 
+                     + 1/2 : (o_state' = 13);
+    [] o_state = 13 -> 1/3 : (o_state' = 9) 
+                     + 1/3 : (o_state' = 13)
+                     + 1/3 : (o_state' = 14);
+    [] o_state = 10 -> 1/4 : (o_state' = 9) 
+                     + 1/4 : (o_state' = 10)
+                     + 1/4 : (o_state' = 14)
+                     + 1/4 : (o_state' = 11);
+    [] o_state = 14 -> 1/3 : (o_state' = 13)
+                     + 1/3 : (o_state' = 10)
+                     + 1/3 : (o_state' = 14);
+    [] o_state = 11 -> 1/2 : (o_state' = 10) 
+                     + 1/2 : (o_state' = 11);
+endmodule
+
+
+module agent
+    a_state : [0..15] init 0;
+
+    [] a_state = 0 -> (a_state' = 4);
+    [] a_state = 4 -> (a_state' = 8);
+    [] a_state = 8 -> (a_state' = 12);
+    [] a_state = 12 -> (a_state' = 13);
+    [] a_state = 13 -> (a_state' = 14);
+    [] a_state = 14 -> (a_state' = 15);
+    [] a_state = 15 -> (a_state' = 15);
+endmodule
+
+label "crash" = a_state = o_state;
+label "goal" = a_state = 15;
+
+
+
+
+    //[] a_state = 12 & o_state = 13 -> (a_state' = 12);
+    //[] a_state = 12 & o_state != 13 -> (a_state' = 13);
