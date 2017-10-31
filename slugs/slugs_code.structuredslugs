@@ -22,9 +22,9 @@ o_state = 7 -> (o_state' = 6) || (o_state' = 3) || (o_state' = 7) || (o_state' =
 o_state = 11 -> (o_state' = 10) || (o_state' = 7) || (o_state' = 11) || (o_state' = 15)
 o_state = 15 -> (o_state' = 14) || (o_state' = 11) || (o_state' = 15)
 
-[ENV_LIVENESS]
-o_state = 15
-o_state = 0
+#[ENV_LIVENESS]
+#o_state = 15
+#o_state = 0
 
 [SYS_TRANS]
 a_state = 0 -> (a_state' = 1) || (a_state' = 4) || (a_state' = 0)
